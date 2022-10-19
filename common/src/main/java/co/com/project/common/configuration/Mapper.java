@@ -1,4 +1,4 @@
-package co.com.project.common.configurations;
+package co.com.project.common.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class Mapper {
 
     @Bean
-    public ModelMapper mapper() {
+    public ModelMapper modelMapper() {
         return new ModelMapper();
     }
 }
