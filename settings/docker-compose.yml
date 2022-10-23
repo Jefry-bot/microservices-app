@@ -1,3 +1,63 @@
 version: "3.9"
 
 services:
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - app
+
+  config:
+    build: ../config-server
+    restart: always
+    ports:
+      - '8888:8888'
+    networks:
+      - app
+
+  registry:
+    build: ../service-registry
+    restart: always
+    ports:
+      - '8761:8761'
+    environment:
+      - CONFIG_HOST=http://config:8888
+    networks:
+      - app
+
+  service-security:
+    build: ../service-security
+    restart: always
+    environment:
+      - CONFIG_HOST=http://config:8888
+      - EUREKA_URI=http://registry:8761/eureka
+    ports:
+      - '8000:8000'
+    networks:
+      - app
+
+  service-gateway:
+    build: ../service-gateway
+    restart: always
+    environment:
+      - CONFIG_HOST=http://config:8888
+      - EUREKA_URI=http://registry:8761/eureka
+      - SECURITY_HOST=http://service-security:8000
+    ports:
+      - '8080:8080'
+    networks:
+      - app
+
+volumes:
+  postgres:
+    driver: local
+
+networks:
+  app:

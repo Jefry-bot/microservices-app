@@ -1,0 +1,14 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Jefry-bot/config-backend.git
+          clone-on-start: true
+          default-label: master
+  security:
+    user:
+      name: Jefry-bot
+      password: 123jefryelmejor

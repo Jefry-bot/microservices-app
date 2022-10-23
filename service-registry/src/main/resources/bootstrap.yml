@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: service-registry
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:${CONFIG_HOST:http://localhost:8888}

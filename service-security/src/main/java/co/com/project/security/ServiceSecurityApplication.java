@@ -14,5 +14,4 @@ public class ServiceSecurityApplication {
     public static void main(String... args) {
         SpringApplication.run(ServiceSecurityApplication.class);
     }
-
 }
