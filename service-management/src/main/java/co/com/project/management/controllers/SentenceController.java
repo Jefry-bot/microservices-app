@@ -1,36 +1,35 @@
-package co.com.project.security.controllers;
+package co.com.project.management.controllers;
 
 import co.com.project.common.dtos.Response;
-import co.com.project.common.dtos.security.UserDTO;
+import co.com.project.common.dtos.management.sentence.SentenceDTO;
 import co.com.project.common.utils.ResponseBuilder;
-import co.com.project.security.services.UserService;
+import co.com.project.management.services.SentenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+@RequestMapping("/Sentences")
 @CrossOrigin(originPatterns = "*")
-public class UserController {
-    private final UserService service;
+public class SentenceController {
+    private final SentenceService service;
 
     @GetMapping
-    public Response<List<UserDTO>> findAll(Pageable pageable) {
+    public Response<List<SentenceDTO>> findAll(Pageable pageable) {
         return ResponseBuilder.success(service.findAll(pageable));
     }
 
     @GetMapping("/{id}")
-    public Response<UserDTO> findById(@PathVariable Long id) {
+    public Response<SentenceDTO> findById(@PathVariable Long id) {
         return ResponseBuilder.success(service.findById(id));
     }
 
     @PostMapping
-    public Response<Void> save(@RequestBody UserDTO user) {
-        return ResponseBuilder.success(() -> service.save(user));
+    public Response<Void> save(@RequestBody SentenceDTO sentence) {
+        return ResponseBuilder.success(() -> service.save(sentence));
     }
 
     @DeleteMapping("/{id}")
