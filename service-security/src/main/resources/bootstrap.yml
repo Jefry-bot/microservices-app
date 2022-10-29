@@ -5,3 +5,7 @@ spring:
     active: development
   config:
     import: optional:configserver:${CONFIG_HOST:http://localhost:8888}
+
+  datasource:
+    dbcp2:
+      default-schema: public

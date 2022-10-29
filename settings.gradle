@@ -4,6 +4,6 @@ include 'common',
         'config-server',
         'service-registry',
         'service-security',
-        'service-gateway'
-include 'service-management'
+        'service-gateway',
+        'service-management'
 

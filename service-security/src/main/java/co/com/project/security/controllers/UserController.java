@@ -9,17 +9,30 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-@CrossOrigin(originPatterns = {"http://localhost:3000"})
+@CrossOrigin(originPatterns = "*")
 public class UserController {
     private final UserService service;
 
     @GetMapping
     public Response<List<UserDTO>> findAll(Pageable pageable) {
         return ResponseBuilder.success(service.findAll(pageable));
+    }
+
+    @PostMapping("/login")
+    public Response<String> verify(@RequestBody UserDTO user, Pageable pageable) {
+        AtomicBoolean status = new AtomicBoolean(false);
+
+        service.findAll(pageable).forEach(userDTO -> {
+            if(user.getUsername().equalsIgnoreCase(userDTO.getUsername()) && user.getPassword().equals(userDTO.getPassword())) {
+                 status.set(true);
+            }
+        });
+        return ResponseBuilder.success(status.get() ? "verify" : "no");
     }
 
     @GetMapping("/{id}")

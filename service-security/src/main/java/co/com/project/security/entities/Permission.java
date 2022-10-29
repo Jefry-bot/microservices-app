@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "_PERMISSION")
+@Table(name = "PERMISSION_TABLE")
 public class Permission extends EntityBase {
     @Column(name = "NAME")
     private String name;

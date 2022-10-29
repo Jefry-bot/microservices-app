@@ -14,4 +14,6 @@ public class UserDTO extends EntityBaseDTO {
     private String cellphone;
     private String phone;
     private List<RoleDTO> roles;
+    private String username;
+    private String password;
 }

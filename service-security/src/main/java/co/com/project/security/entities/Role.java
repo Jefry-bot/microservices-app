@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "_ROLE")
+@Table(name = "ROLE_TABLE")
 public class Role extends EntityBase {
     @Column(name = "NAME")
     private String name;

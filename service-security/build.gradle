@@ -8,17 +8,5 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-    runtimeOnly 'com.h2database:h2'
-
-    //runtimeOnly 'org.postgresql:postgresql'
-    /*
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">postgres</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hbm2ddl.auto">create-drop</property>
-        <property name="show_sql">true</property>
-    */
+    runtimeOnly 'org.postgresql:postgresql'
 }

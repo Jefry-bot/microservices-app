@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "_USER")
+@Table(name = "USER_TABLE")
 public class User extends EntityBase {
     @Column(name = "NAME")
     private String name;
@@ -19,6 +19,10 @@ public class User extends EntityBase {
     private String cellphone;
     @Column(name = "PHONE")
     private String phone;
+    @Column(name = "USERNAME")
+    private String username;
+    @Column(name = "PASSWORD")
+    private String password;
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",

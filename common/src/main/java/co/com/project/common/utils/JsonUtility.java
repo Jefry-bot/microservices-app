@@ -12,7 +12,7 @@ public class JsonUtility {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            return objectMapper.writeValueAsString(object);
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
         } catch (JsonProcessingException e) {
             throw new ApplicationException("Convert error object mapper.");
         }

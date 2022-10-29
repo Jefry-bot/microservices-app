@@ -5,8 +5,8 @@ services:
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
     ports:
       - '5432:5432'
     volumes:
@@ -38,8 +38,25 @@ services:
     environment:
       - CONFIG_HOST=http://config:8888
       - EUREKA_URI=http://registry:8761/eureka
+      - DB_HOST=postgres:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
     ports:
       - '8000:8000'
+    networks:
+      - app
+
+  service-management:
+    build: ../service-management
+    restart: always
+    environment:
+      - CONFIG_HOST=http://config:8888
+      - EUREKA_URI=http://registry:8761/eureka
+      - DB_HOST=postgres:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '8001:8001'
     networks:
       - app
 
