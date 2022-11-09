@@ -4,6 +4,4 @@ include 'common',
         'config-server',
         'service-registry',
         'service-security',
-        'service-gateway',
-        'service-management'
-
+        'service-gateway'

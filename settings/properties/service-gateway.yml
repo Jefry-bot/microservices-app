@@ -16,3 +16,7 @@ spring:
           uri: lb://service-security
           predicates:
             - Path=/api/users/**
+        - id: service-management
+          uri: lb://service-management
+          predicates:
+            - Path=/api/management/sentences/**
